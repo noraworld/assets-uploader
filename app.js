@@ -10,6 +10,7 @@ import path from 'path'
 import sharp from 'sharp'
 
 const tmpFile = 'tmp.md'
+const pushRetryMaximum = 10
 const cache = new Map()
 
 async function run() {
