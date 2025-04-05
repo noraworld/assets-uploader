@@ -73,7 +73,7 @@ runs:
         COMPRESSION_THRESHOLD: ${{ inputs.compression_threshold }}
         DELETE_AFTER: ${{ inputs.delete_after }}
         GITHUB_TOKEN: ${{ github.token }}
-        ISSUE_NUMBER: ${{ inputs.issue_number || github.event.issue.number }}
+        ISSUE_NUMBER: ${{ inputs.issue_number || github.event.issue.number || github.event.inputs.issue_number }}
         ISSUE_REPO: ${{ inputs.issue_repo || github.repository }}
         PERSONAL_ACCESS_TOKEN: ${{ inputs.personal_access_token }}
         RESIZE_HEIGHT: ${{ inputs.resize_height }}
