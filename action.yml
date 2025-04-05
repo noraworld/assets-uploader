@@ -1,0 +1,82 @@
+name: Assets Uploader
+description: Push attached files uploaded on an issue to a specific repository
+author: noraworld
+branding:
+  icon: upload
+  color: blue
+
+inputs:
+  assets_directory:
+    required: true
+    default: ""
+  assets_repo:
+    required: true
+    default: ""
+  committer_email:
+    required: true
+    default: ""
+  committer_name:
+    required: true
+    default: ""
+  compression_threshold:
+    required: false
+    default: ""
+  delete_after:
+    required: false
+    default: false
+  issue_number:
+    required: false
+    default: ""
+  issue_repo:
+    required: false
+    default: ""
+  personal_access_token:
+    required: false
+    default: ""
+  resize_height:
+    required: false
+    default: ""
+  resize_width:
+    required: false
+    default: ""
+  with_assets_compression:
+    required: false
+    default: false
+  with_compatible_format:
+    required: false
+    default: false
+
+runs:
+  using: "composite"
+  steps:
+    - name: Check out repository
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '21.6.2'
+
+    - name: Install packages
+      run: npm install
+      shell: sh
+      working-directory: ${{ github.action_path }}
+
+    - name: Upload attached files
+      run: node ${{ github.action_path }}/app.js
+      shell: sh
+      env:
+        ASSETS_DIRECTORY: ${{ inputs.assets_directory }}
+        ASSETS_REPO: ${{ inputs.assets_repo }}
+        COMMITTER_EMAIL: ${{ inputs.committer_email }}
+        COMMITTER_NAME: ${{ inputs.committer_name }}
+        COMPRESSION_THRESHOLD: ${{ inputs.compression_threshold }}
+        DELETE_AFTER: ${{ inputs.delete_after }}
+        GITHUB_TOKEN: ${{ github.token }}
+        ISSUE_NUMBER: ${{ inputs.issue_number || github.event.issue.number }}
+        ISSUE_REPO: ${{ inputs.issue_repo || github.repository }}
+        PERSONAL_ACCESS_TOKEN: ${{ inputs.personal_access_token }}
+        RESIZE_HEIGHT: ${{ inputs.resize_height }}
+        RESIZE_WIDTH: ${{ inputs.resize_width }}
+        WITH_ASSETS_COMPRESSION: ${{ inputs.with_assets_compression }}
+        WITH_COMPATIBLE_FORMAT: ${{ inputs.with_compatible_format }}
