@@ -36,6 +36,8 @@ jobs:
           resize_width: 1920
           with_assets_compression: true
           with_compatible_format: false
+          assets_repo_gist_id: 1234567890abcdef1234567890abcdef
+          assets_repo_gist_file: gistfile1.txt
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
 ```
@@ -56,6 +58,8 @@ jobs:
 | `resize_width`            | See [noraworld/issue-recorder](https://github.com/noraworld/issue-recorder?tab=readme-ov-file#options)           |         |         |          |
 | `with_assets_compression` | See [noraworld/issue-recorder](https://github.com/noraworld/issue-recorder?tab=readme-ov-file#options)           |         |         |          |
 | `with_compatible_format`  | See [noraworld/issue-recorder](https://github.com/noraworld/issue-recorder?tab=readme-ov-file#options)           |         |         |          |
+| `assets_repo_gist_id`     | See [noraworld/issue-recorder](https://github.com/noraworld/issue-recorder?tab=readme-ov-file#options)           |         |         |          |
+| `assets_repo_gist_file`   | See [noraworld/issue-recorder](https://github.com/noraworld/issue-recorder?tab=readme-ov-file#options)           |         |         |          |
 
 ## Development
 ```shell

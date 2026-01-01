@@ -12,6 +12,12 @@ inputs:
   assets_repo:
     required: true
     default: ""
+  assets_repo_gist_id:
+    required: false
+    default: ""
+  assets_repo_gist_file:
+    required: false
+    default: "gistfile1.txt"
   committer_email:
     required: true
     default: ""
@@ -68,6 +74,8 @@ runs:
       env:
         ASSETS_DIRECTORY: ${{ inputs.assets_directory }}
         ASSETS_REPO: ${{ inputs.assets_repo }}
+        ASSETS_REPO_GIST_ID: ${{ inputs.assets_repo_gist_id }}
+        ASSETS_REPO_GIST_FILE: ${{ inputs.assets_repo_gist_file }}
         COMMITTER_EMAIL: ${{ inputs.committer_email }}
         COMMITTER_NAME: ${{ inputs.committer_name }}
         COMPRESSION_THRESHOLD: ${{ inputs.compression_threshold }}
